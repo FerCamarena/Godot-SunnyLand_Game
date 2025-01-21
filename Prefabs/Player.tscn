@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://blji4xi2wujrn"]
+
+[ext_resource type="Texture2D" uid="uid://t03x5jhjya1y" path="res://Sprites/Characters/character_beige_idle.png" id="1_yev4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4m7f"]
+size = Vector2(14, 20)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_yev4i")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_y4m7f")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
