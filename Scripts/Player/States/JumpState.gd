@@ -10,6 +10,9 @@ var input_axis: float = 0.0
 #Method called once when starting state
 func enter(owner: CharacterBody2D) -> void:
 	if owner.debug: print("Entering Jump")
+	#Jumping
+	if owner.is_on_floor():
+		owner.velocity.y = owner.JUMP_FORCE
 
 #Method called once when leaving state
 func exit(owner: CharacterBody2D) -> void:
