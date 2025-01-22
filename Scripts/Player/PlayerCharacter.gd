@@ -31,3 +31,10 @@ func _process(delta: float) -> void:
 	#Delegate logic to current state
 	SM.manage(delta, self)
 
+#Fixed time update
+func _physics_process(delta: float) -> void:
+	#Energy loss
+	velocity.x = move_toward(velocity.x, 0, 5 * FRICTION * delta)
+	
+	#Applying velocity
+	move_and_slide()
