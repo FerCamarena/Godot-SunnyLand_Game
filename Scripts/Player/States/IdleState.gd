@@ -23,3 +23,5 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 	#Managing states
 	if input_axis != 0:
 		owner.SM.change_state("Move", owner)
+	elif Input.is_action_just_pressed("jump"):
+		owner.SM.change_state("Jump", owner)

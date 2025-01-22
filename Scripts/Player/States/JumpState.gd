@@ -2,18 +2,18 @@
 extends IState
 
 #Registration
-class_name MoveState
+class_name JumpState
 
 #Attributes
 var input_axis: float = 0.0
 
 #Method called once when starting current state
 func enter(owner: CharacterBody2D) -> void:
-	if owner.debug: print("Entering Move")
+	if owner.debug: print("Entering Jump")
 
 #Method called once when leaving current state
 func exit(owner: CharacterBody2D) -> void:
-	if owner.debug: print("Exiting Move")
+	if owner.debug: print("Exiting Jump")
 
 #Method called repeatedly for custom state physic logic
 func execute(delta: float, owner: CharacterBody2D) -> void:
@@ -21,7 +21,8 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 	input_axis = Input.get_axis("move_left", "move_right")
 	
 	#Managing states
-	if is_zero_approx(owner.velocity.x) and is_zero_approx(input_axis):
-		owner.SM.change_state("Idle", owner)
-	elif Input.is_action_just_pressed("jump"):
-		owner.SM.change_state("Jump", owner)
+	if owner.is_on_floor() and owner.velocity.y <= 0:
+		if owner.velocity.x != 0:
+			owner.SM.change_state("Move", owner)
+		else:
+			owner.SM.change_state("Idle", owner)

@@ -8,6 +8,7 @@ class_name StateMachine
 var current_state: IState
 var states: Dictionary = {
 	"Idle": IdleState.new(),
+	"Move": MoveState.new(),
 	"Jump": JumpState.new()
 }
 

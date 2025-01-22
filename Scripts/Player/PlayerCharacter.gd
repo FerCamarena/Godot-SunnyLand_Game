@@ -10,6 +10,12 @@ const AERIAL_SPEED: float = 160.0
 const JUMP_FORCE: float = -320.0
 const FRICTION: float = 240.0
 
+
+#Method called once at start
+func _ready() -> void:
+	#Setting default state
+	SM.current_state = SM.states.get("Idle")
+
 #Frame time update
 func _process(delta: float) -> void:
 	#Delegate logic to current state
