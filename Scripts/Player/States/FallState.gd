@@ -24,6 +24,11 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 	if not owner.is_on_floor():
 		owner.velocity.y += owner.get_gravity().y * delta * 1.5
 	
+	#Moving
+	if input_axis != 0:
+		if owner.velocity.x < owner.MOVE_SPEED * 2 and owner.velocity.x > owner.MOVE_SPEED * -2:
+			owner.velocity.x += 16 * input_axis * owner.MOVE_SPEED * delta
+	
 	#Managing states
 	if owner.is_on_floor() and owner.velocity.y <= 0:
 		if owner.velocity.x != 0:
