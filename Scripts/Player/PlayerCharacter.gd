@@ -1,6 +1,9 @@
 #Libraries
 extends CharacterBody2D
 
+#DEV
+var debug: bool = false
+
 #Componenets
 var SM: StateMachine = StateMachine.new()
 
