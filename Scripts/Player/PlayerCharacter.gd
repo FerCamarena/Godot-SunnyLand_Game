@@ -10,10 +10,11 @@ var PA: PlayerAnimator = PlayerAnimator.new()
 var PS: PlayerSounder = PlayerSounder.new()
 
 #Attributes
-const MOVE_SPEED: float = 160.0
-const AERIAL_SPEED: float = 160.0
-const JUMP_FORCE: float = -320.0
-const FRICTION: float = 240.0
+const MOVE_SPEED: int = 160
+const AERIAL_SPEED: int = 160
+const JUMP_FORCE: int = -400
+const FALL_SPEED: int = -400
+const FRICTION: int = 240
 
 
 #Method called once at start

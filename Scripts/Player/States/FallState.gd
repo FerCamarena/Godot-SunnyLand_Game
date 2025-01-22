@@ -2,18 +2,18 @@
 extends IState
 
 #Registration
-class_name FloatState
+class_name FallState
 
 #Attributes
 var input_axis: float = 0.0
 
 #Method called once when starting state
 func enter(owner: CharacterBody2D) -> void:
-	if owner.debug: print("Entering Float")
+	if owner.debug: print("Entering Fall")
 
 #Method called once when leaving state
 func exit(owner: CharacterBody2D) -> void:
-	if owner.debug: print("Exiting Float")
+	if owner.debug: print("Exiting Fall")
 
 #Method called repeatedly for state logic
 func execute(delta: float, owner: CharacterBody2D) -> void:
@@ -26,5 +26,3 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 			owner.SM.change_state("Move", owner)
 		else:
 			owner.SM.change_state("Idle", owner)
-	elif owner.velocity.y >= 48:
-		owner.SM.change_state("Fall", owner)
