@@ -11,7 +11,8 @@ var states: Dictionary = {
 	"Move": MoveState.new(),
 	"Jump": JumpState.new(),
 	"Float": FloatState.new(),
-	"Fall": FallState.new()
+	"Fall": FallState.new(),
+	"Die": DieState.new()
 }
 
 #Method called for dynamically change between states
