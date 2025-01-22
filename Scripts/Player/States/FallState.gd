@@ -20,6 +20,10 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 	#Custom input handling
 	input_axis = Input.get_axis("move_left", "move_right")
 	
+	#Applying custom gravity
+	if not owner.is_on_floor():
+		owner.velocity.y += owner.get_gravity().y * delta * 1.5
+	
 	#Managing states
 	if owner.is_on_floor() and owner.velocity.y <= 0:
 		if owner.velocity.x != 0:
