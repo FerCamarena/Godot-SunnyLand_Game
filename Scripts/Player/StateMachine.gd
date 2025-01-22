@@ -9,7 +9,8 @@ var current_state: IState
 var states: Dictionary = {
 	"Idle": IdleState.new(),
 	"Move": MoveState.new(),
-	"Jump": JumpState.new()
+	"Jump": JumpState.new(),
+	"Float": FloatState.new(),
 }
 
 #Method called for dynamically change between states

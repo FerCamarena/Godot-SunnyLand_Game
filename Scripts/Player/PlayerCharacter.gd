@@ -23,7 +23,7 @@ func _ready() -> void:
 	
 	#Storing child node references
 	PA.animation_player = $Animator
-	PS.audio_player = $Listener
+	PS.audio_player = $Sounder
 
 #Frame time update
 func _process(delta: float) -> void:
