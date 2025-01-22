@@ -12,6 +12,7 @@ var states: Dictionary = {
 	"Jump": JumpState.new(),
 	"Float": FloatState.new(),
 	"Fall": FallState.new(),
+	"Spawn": SpawnState.new(),
 	"Die": DieState.new()
 }
 
