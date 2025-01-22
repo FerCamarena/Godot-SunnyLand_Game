@@ -7,6 +7,8 @@ class_name StateMachine
 #Attributes
 var current_state: IState
 var states: Dictionary = {
+	"Idle": IdleState.new(),
+	"Jump": JumpState.new()
 }
 
 #Method called for dynamically change between states
