@@ -37,10 +37,10 @@ func change_state(new_state: String, _parent: CharacterBody2D) -> void:
 		push_error("Current state invalid or not found")
 
 #Method called to manage current state logic
-func manage(delta: float, _parent: CharacterBody2D) -> void:
+func manage(_delta: float, _parent: CharacterBody2D) -> void:
 	#Executing current state updates
 	if current_state:
-		current_state.execute(delta, _parent)
+		current_state.execute(_delta, _parent)
 	#Error handling
 	else:
 		push_error("Current state invalid or not found")
