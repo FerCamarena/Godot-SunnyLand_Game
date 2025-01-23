@@ -12,7 +12,7 @@ func enter(owner: CharacterBody2D) -> void:
 	if owner.debug: print("Entering Jump")
 	#Jumping
 	if owner.is_on_floor():
-		owner.velocity.y = owner.JUMP_FORCE
+		owner.velocity.y = owner.jump_force
 
 #Method called once when leaving state
 func exit(owner: CharacterBody2D) -> void:
@@ -24,13 +24,13 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 	input_axis = Input.get_axis("move_left", "move_right")
 	
 	#Applying custom gravity
-	if not owner.is_on_floor():
+	if not owner.is_on_floor() && owner.velocity.y >= owner.fall_speed:
 		owner.velocity.y += owner.get_gravity().y * delta
 	
 	#Moving
 	if input_axis != 0:
-		if owner.velocity.x < owner.MOVE_SPEED * 2 and owner.velocity.x > owner.MOVE_SPEED * -2:
-			owner.velocity.x += 16 * input_axis * owner.AERIAL_SPEED * delta
+		if owner.velocity.x < owner.move_speed * 2 and owner.velocity.x > owner.move_speed * -2:
+			owner.velocity.x += 16 * input_axis * owner.aero_speed * delta
 	
 	#Managing states
 	if owner.is_on_floor() and owner.velocity.y <= 0:
