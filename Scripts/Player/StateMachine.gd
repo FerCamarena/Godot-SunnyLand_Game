@@ -44,3 +44,12 @@ func manage(delta: float, _parent: CharacterBody2D) -> void:
 	#Error handling
 	else:
 		push_error("Current state invalid or not found")
+
+#Method called for ending current state machine
+func terminate(_parent: CharacterBody2D) -> void:
+	#Exiting current state
+	if current_state:
+		current_state.exit(_parent)
+	#Error handling
+	else:
+		push_error("Current state invalid or not found")
