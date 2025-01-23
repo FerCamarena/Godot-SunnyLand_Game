@@ -13,6 +13,9 @@ func enter(_parent: CharacterBody2D) -> void:
 	
 	#Disable collisions
 	_parent.CS.disabled = true
+	
+	#Generate object
+	spawnObject(_parent)
 
 #Method called once when leaving state
 func exit(_parent: CharacterBody2D) -> void:
@@ -25,3 +28,8 @@ func exit(_parent: CharacterBody2D) -> void:
 func execute(_delta: float, _parent: CharacterBody2D) -> void:
 	#Closing state machine
 	_parent.SM.terminate(_parent)
+
+func spawnObject(_parent: CharacterBody2D) -> void:
+	var blockObject = _parent.block.instantiate()
+	_parent.get_parent().add_child(blockObject)
+	blockObject.position = _parent.position
