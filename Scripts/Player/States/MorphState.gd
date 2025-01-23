@@ -17,7 +17,11 @@ func enter(_parent: CharacterBody2D) -> void:
 #Method called once when leaving state
 func exit(_parent: CharacterBody2D) -> void:
 	if _parent.DEBUG: print("Exiting Morph")
+	
+	#Eliminate self player
+	_parent.queue_free()
 
 #Method called repeatedly for state logic
-	pass
 func execute(_delta: float, _parent: CharacterBody2D) -> void:
+	#Closing state machine
+	_parent.SM.terminate(_parent)
