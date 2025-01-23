@@ -11,6 +11,8 @@ func enter(_parent: CharacterBody2D) -> void:
 	#Managging custom physics
 	_parent.velocity = Vector2.ZERO
 	
+	#Morphing player into block
+	_parent.PA.play_animation("Morph")
 
 #Method called once when leaving state
 func exit(_parent: CharacterBody2D) -> void:
