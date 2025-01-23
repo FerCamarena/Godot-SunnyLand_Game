@@ -28,7 +28,7 @@ func execute(_delta: float, _parent: CharacterBody2D) -> void:
 		_parent.SM.change_state("Jump", _parent)
 	elif Input.is_action_just_pressed("morph"):
 		_parent.SM.change_state("Morph", _parent)
-	elif not _parent.is_on_floor():
+	elif not _parent.is_on_floor() and _parent.velocity.y > 0:
 		_parent.SM.change_state("Fall", _parent)
 	elif input_axis != 0:
 		_parent.SM.change_state("Move", _parent)

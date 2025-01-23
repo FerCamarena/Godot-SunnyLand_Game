@@ -29,11 +29,11 @@ func execute(_delta: float, _parent: CharacterBody2D) -> void:
 			_parent.velocity.x += 16 * input_axis * _parent.move_speed * _delta
 	
 	#Managing states
-	if is_zero_approx(_parent.velocity.x):
-		_parent.SM.change_state("Idle", _parent)
-	elif not _parent.is_on_floor():
-		_parent.SM.change_state("Fall", _parent)
-	elif Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump"):
 		_parent.SM.change_state("Jump", _parent)
 	elif Input.is_action_just_pressed("morph"):
 		_parent.SM.change_state("Morph", _parent)
+	elif not _parent.is_on_floor() and _parent.velocity.y > 0:
+		_parent.SM.change_state("Fall", _parent)
+	elif is_zero_approx(_parent.velocity.x):
+		_parent.SM.change_state("Idle", _parent)
