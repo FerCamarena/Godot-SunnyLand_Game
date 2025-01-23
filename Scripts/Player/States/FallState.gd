@@ -30,7 +30,7 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 			owner.velocity.x += 16 * input_axis * owner.MOVE_SPEED * delta
 	
 	#Managing states
-	if owner.is_on_floor() and owner.velocity.y <= 0:
+	if owner.is_on_floor():
 		if owner.velocity.x != 0:
 			owner.SM.change_state("Move", owner)
 		else:
