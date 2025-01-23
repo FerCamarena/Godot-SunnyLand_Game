@@ -18,10 +18,10 @@ var states: Dictionary = {
 }
 
 #Method called for dynamically change between states
-func change_state(new_state: String, owner: CharacterBody2D) -> void:
+func change_state(new_state: String, _parent: CharacterBody2D) -> void:
 	#Exiting current state
 	if current_state:
-		current_state.exit(owner)
+		current_state.exit(_parent)
 	#Error handling
 	else:
 		push_error("Current state invalid or not found")
@@ -31,16 +31,25 @@ func change_state(new_state: String, owner: CharacterBody2D) -> void:
 	
 	#Entering new state
 	if current_state:
-		current_state.enter(owner)
+		current_state.enter(_parent)
 	#Error handling
 	else:
 		push_error("Current state invalid or not found")
 
-#Method called to physic manage current state
-func manage(delta: float, owner: CharacterBody2D) -> void:
+#Method called to manage current state logic
+func manage(_delta: float, _parent: CharacterBody2D) -> void:
 	#Executing current state updates
 	if current_state:
-		current_state.execute(delta, owner)
+		current_state.execute(_delta, _parent)
+	#Error handling
+	else:
+		push_error("Current state invalid or not found")
+
+#Method called for ending current state machine
+func terminate(_parent: CharacterBody2D) -> void:
+	#Exiting current state
+	if current_state:
+		current_state.exit(_parent)
 	#Error handling
 	else:
 		push_error("Current state invalid or not found")

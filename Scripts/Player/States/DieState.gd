@@ -5,16 +5,19 @@ extends IState
 class_name DieState
 
 #Method called once when starting state
-func enter(owner: CharacterBody2D) -> void:
-	if owner.debug: print("Entering Die")
+func enter(_parent: CharacterBody2D) -> void:
+	if _parent.DEBUG: print("Entering Die")
 	
 	#Managging custom physics
-	owner.velocity = Vector2.ZERO
+	_parent.velocity = Vector2.ZERO
+	
+	#Disable collisions
+	_parent.CS.disabled = true
 
 #Method called once when leaving state
-func exit(owner: CharacterBody2D) -> void:
-	if owner.debug: print("Exiting Die")
+func exit(_parent: CharacterBody2D) -> void:
+	if _parent.DEBUG: print("Exiting Die")
 
 #Method called repeatedly for state logic
-func execute(delta: float, owner: CharacterBody2D) -> void:
+func execute(_delta: float, _parent: CharacterBody2D) -> void:
 	pass

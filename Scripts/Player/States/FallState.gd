@@ -8,30 +8,31 @@ class_name FallState
 var input_axis: float = 0.0
 
 #Method called once when starting state
-func enter(owner: CharacterBody2D) -> void:
-	if owner.debug: print("Entering Fall")
+func enter(_parent: CharacterBody2D) -> void:
+	if _parent.DEBUG: print("Entering Fall")
 
 #Method called once when leaving state
-func exit(owner: CharacterBody2D) -> void:
-	if owner.debug: print("Exiting Fall")
+func exit(_parent: CharacterBody2D) -> void:
+	if _parent.DEBUG: print("Exiting Fall")
 
 #Method called repeatedly for state logic
-func execute(delta: float, owner: CharacterBody2D) -> void:
+func execute(_delta: float, _parent: CharacterBody2D) -> void:
 	#Custom input handling
 	input_axis = Input.get_axis("move_left", "move_right")
 	
 	#Applying custom gravity
-	if not owner.is_on_floor():
-		owner.velocity.y += owner.get_gravity().y * delta * 1.5
+	apply_gravity(_delta, 1.5, _parent)
 	
 	#Moving
 	if input_axis != 0:
-		if owner.velocity.x < owner.MOVE_SPEED * 2 and owner.velocity.x > owner.MOVE_SPEED * -2:
-			owner.velocity.x += 16 * input_axis * owner.MOVE_SPEED * delta
+		if _parent.velocity.x < _parent.move_speed * 2 and _parent.velocity.x > _parent.move_speed * -2:
+			_parent.velocity.x += 16 * input_axis * _parent.aero_speed * _delta
 	
 	#Managing states
-	if owner.is_on_floor() and owner.velocity.y <= 0:
-		if owner.velocity.x != 0:
-			owner.SM.change_state("Move", owner)
+	if _parent.is_on_floor():
+		if _parent.velocity.x != 0:
+			_parent.SM.change_state("Move", _parent)
 		else:
-			owner.SM.change_state("Idle", owner)
+			_parent.SM.change_state("Idle", _parent)
+	elif Input.is_action_just_pressed("morph"):
+		_parent.SM.change_state("Morph", _parent)
