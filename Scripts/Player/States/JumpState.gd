@@ -24,8 +24,7 @@ func execute(_delta: float, _parent: CharacterBody2D) -> void:
 	input_axis = Input.get_axis("move_left", "move_right")
 	
 	#Applying custom gravity
-	if not _parent.is_on_floor() && _parent.velocity.y >= _parent.fall_speed:
-		_parent.velocity.y += _parent.get_gravity().y * delta
+	apply_gravity(_delta, 1, _parent)
 	
 	#Moving
 	if input_axis != 0:
