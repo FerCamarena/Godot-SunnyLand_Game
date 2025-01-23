@@ -13,6 +13,7 @@ CS = NodePath("Shape")
 block = ExtResource("2_y55lc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("1_yev4i")
 
 [node name="Shape" type="CollisionShape2D" parent="."]

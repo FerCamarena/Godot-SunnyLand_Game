@@ -2,7 +2,7 @@
 extends CharacterBody2D
 
 #DEV
-var debug: bool = false
+@export var DEBUG: bool = false
 
 #Componenets
 @onready var SM: StateMachine = StateMachine.new()
@@ -24,12 +24,12 @@ func _ready() -> void:
 	#Setting default state
 	SM.current_state = SM.states.get("Idle")
 
-#Frame time update
+#Frame time updates
 func _process(delta: float) -> void:
 	#Delegate logic to current state
 	SM.manage(delta, self)
 
-#Fixed time update
+#Fixed time updates
 func _physics_process(delta: float) -> void:
 	#Energy loss
 	velocity.x = move_toward(velocity.x, 0, 5 * resistance * delta)
