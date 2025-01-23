@@ -16,7 +16,7 @@ func exit(_parent: CharacterBody2D) -> void:
 	if _parent.DEBUG: print("Exiting Idle")
 
 #Method called repeatedly for state logic
-func execute(delta: float, _parent: CharacterBody2D) -> void:
+func execute(_delta: float, _parent: CharacterBody2D) -> void:
 	#Custom input handling
 	input_axis = Input.get_axis("move_left", "move_right")
 	
