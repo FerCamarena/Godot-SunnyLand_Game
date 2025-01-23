@@ -21,6 +21,10 @@ extends CharacterBody2D
 
 #Method called once at start
 func _ready() -> void:
+	#Initializing components
+	PA.animation_player = $Animator
+	PS.audio_player = $Sounder
+	
 	#Setting default state
 	SM.current_state = SM.states.get("Idle")
 

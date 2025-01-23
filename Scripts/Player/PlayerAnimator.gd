@@ -5,7 +5,7 @@ extends Node
 class_name PlayerAnimator
 
 #Components
-@onready var animation_player: AnimationPlayer = $Animator
+var animation_player: AnimationPlayer
 
 #Method for calling custom animations to play
 func play_animation(new_animation: String) -> void:

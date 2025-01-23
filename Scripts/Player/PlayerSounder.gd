@@ -5,7 +5,7 @@ extends Node
 class_name PlayerSounder
 
 #Components
-@onready var audio_player: AudioStreamPlayer2D = $Sounder
+var audio_player: AudioStreamPlayer2D
 
 #Attributes
 var sounds: Dictionary = {}
