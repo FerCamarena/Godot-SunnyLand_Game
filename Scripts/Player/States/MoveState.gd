@@ -36,3 +36,5 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 		owner.SM.change_state("Fall", owner)
 	elif Input.is_action_just_pressed("jump"):
 		owner.SM.change_state("Jump", owner)
+	elif Input.is_action_just_pressed("morph"):
+		owner.SM.change_state("Morph", owner)

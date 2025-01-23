@@ -38,5 +38,7 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 			owner.SM.change_state("Move", owner)
 		else:
 			owner.SM.change_state("Idle", owner)
+	elif Input.is_action_just_pressed("morph"):
+		owner.SM.change_state("Morph", owner)
 	elif owner.velocity.y >= -32:
 		owner.SM.change_state("Float", owner)

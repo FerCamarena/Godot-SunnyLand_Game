@@ -21,7 +21,7 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 	input_axis = Input.get_axis("move_left", "move_right")
 	
 	#Applying custom gravity
-	if not owner.is_on_floor():
+	if not owner.is_on_floor() && owner.velocity.y >= owner.fall_speed:
 		owner.velocity.y += owner.get_gravity().y * delta * 1.5
 	
 	#Moving
@@ -35,3 +35,5 @@ func execute(delta: float, owner: CharacterBody2D) -> void:
 			owner.SM.change_state("Move", owner)
 		else:
 			owner.SM.change_state("Idle", owner)
+	elif Input.is_action_just_pressed("morph"):
+		owner.SM.change_state("Morph", owner)

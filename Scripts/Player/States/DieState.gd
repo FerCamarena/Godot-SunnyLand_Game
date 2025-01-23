@@ -10,6 +10,9 @@ func enter(owner: CharacterBody2D) -> void:
 	
 	#Managging custom physics
 	owner.velocity = Vector2.ZERO
+	
+	#Disable collisions
+	owner.CS.disabled = true
 
 #Method called once when leaving state
 func exit(owner: CharacterBody2D) -> void:
