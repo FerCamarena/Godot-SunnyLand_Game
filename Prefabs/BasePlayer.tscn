@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bct4vg45dics6" path="res://Prefabs/Block.tscn" id="2_y55lc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4m7f"]
-size = Vector2(14, 20)
+size = Vector2(10, 17)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("CS")]
 script = ExtResource("1_llowg")
@@ -14,10 +14,11 @@ block = ExtResource("2_y55lc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 1
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_yev4i")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_y4m7f")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
