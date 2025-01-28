@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://djatdv58fjblm"]
+[gd_scene load_steps=5 format=4 uid="uid://djatdv58fjblm"]
 
 [ext_resource type="PackedScene" uid="uid://blji4xi2wujrn" path="res://Prefabs/BasePlayer.tscn" id="1_aeo7e"]
 [ext_resource type="TileSet" uid="uid://dyw3bem07jnsm" path="res://Tilesets/backgrounds.tres" id="2_6erxs"]
+[ext_resource type="TileSet" uid="uid://bann38wla7hon" path="res://Tilesets/platforms.tres" id="3_a5qpi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pj0c"]
 size = Vector2(860.5, 27.75)
@@ -32,6 +33,4 @@ collision_enabled = false
 navigation_enabled = false
 
 [node name="LevelTilemap" type="TileMapLayer" parent="."]
-visible = false
-tile_map_data = PackedByteArray("AAASAA0AAAADAAEAAAATAA0AAAAAAAEAAAAUAA0AAAABAAEAAAAVAA0AAAABAAEAAAAWAA0AAAAAAAEAAAAXAA0AAAACAAEAAAAYAA0AAAAAAAEAAAAZAA0AAAABAAEAAAAaAA0AAAABAAEAAAAbAA0AAAABAAEAAAAcAA0AAAABAAEAAAAdAA0AAAAAAAEAAAAeAA0AAAACAAEAAAASAAwAAAACAAIAAAATAAwAAAAAAAIAAAAUAAwAAAACAAIAAAAVAAwAAAACAAIAAAAWAAwAAAABAAIAAAAXAAwAAAAAAAIAAAAYAAwAAAADAAIAAAAZAAwAAAABAAIAAAAaAAwAAAACAAIAAAAbAAwAAAAAAAIAAAAcAAwAAAABAAIAAAAdAAwAAAACAAIAAAAeAAwAAAADAAIAAAAeAAsAAAAAAAEAAAAdAAsAAAABAAEAAAAcAAsAAAAAAAEAAAAbAAsAAAADAAEAAAAaAAsAAAACAAEAAAAZAAsAAAABAAEAAAAYAAsAAAAAAAEAAAAXAAsAAAADAAEAAAAWAAsAAAABAAEAAAAVAAsAAAABAAEAAAAUAAsAAAAAAAEAAAATAAsAAAAAAAEAAAASAAsAAAAAAAEAAAA=")
-tile_set = ExtResource("2_6erxs")
+tile_set = ExtResource("3_a5qpi")
