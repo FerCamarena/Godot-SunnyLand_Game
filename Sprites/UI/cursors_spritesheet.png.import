@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cge4fagjsjyq8"
-path="res://.godot/imported/prompts.png-1869595325e331262194cf6a483eb84e.ctex"
+uid="uid://d0is3k2vxu6e5"
+path="res://.godot/imported/cursors_spritesheet.png-8f94247c75ecedd0131eaccf00811c2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/prompts.png"
-dest_files=["res://.godot/imported/prompts.png-1869595325e331262194cf6a483eb84e.ctex"]
+source_file="res://Sprites/UI/cursors_spritesheet.png"
+dest_files=["res://.godot/imported/cursors_spritesheet.png-8f94247c75ecedd0131eaccf00811c2c.ctex"]
 
 [params]
 
