@@ -13,9 +13,9 @@ extends CharacterBody2D
 #Attributes
 @export var move_speed: int = 160
 @export var aero_speed: int = 160
-@export var jump_force: int = -400
-@export var fall_speed: int = -400
-@export var resistance: int = 240
+@export var jump_force: int = -420
+@export var fall_speed: int = -420
+@export var resistance: int = 160
 
 @export var block: PackedScene
 

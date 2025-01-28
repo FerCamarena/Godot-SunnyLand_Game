@@ -45,12 +45,15 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("CS")]
+safe_margin = 0.1
 script = ExtResource("1_llowg")
 CS = NodePath("Shape")
 block = ExtResource("2_y55lc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 1
+texture_filter = 1
+position = Vector2(0, -3)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_in1sb")
 hframes = 4
