@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://blji4xi2wujrn"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCharacter.gd" id="1_llowg"]
-[ext_resource type="Texture2D" uid="uid://t03x5jhjya1y" path="res://Sprites/Characters/character_beige_idle.png" id="1_yev4i"]
 [ext_resource type="PackedScene" uid="uid://bct4vg45dics6" path="res://Prefabs/Block.tscn" id="2_y55lc"]
+[ext_resource type="Texture2D" uid="uid://dv8tuujxo4snb" path="res://Sprites/Tilesets/characters_spritesheet.png" id="3_in1sb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4m7f"]
 size = Vector2(10, 17)
@@ -52,7 +52,9 @@ block = ExtResource("2_y55lc")
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_yev4i")
+texture = ExtResource("3_in1sb")
+hframes = 4
+vframes = 3
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
