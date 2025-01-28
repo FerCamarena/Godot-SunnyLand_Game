@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bct4vg45dics6"]
 
-[ext_resource type="Texture2D" uid="uid://bhikh71d78wm5" path="res://Sprites/Tiles/ground_dirt_0.png" id="1_ejcba"]
+[ext_resource type="Texture2D" uid="uid://w46lmkcnodey" path="res://Sprites/Tilesets/platforms_tilesheet.png" id="1_poagc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dr15"]
 size = Vector2(18, 18)
@@ -8,7 +8,11 @@ size = Vector2(18, 18)
 [node name="Block" type="StaticBody2D"]
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_ejcba")
+texture_filter = 1
+texture = ExtResource("1_poagc")
+hframes = 37
+vframes = 14
+frame = 392
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1dr15")
