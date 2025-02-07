@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://blji4xi2wujrn" path="res://Prefabs/BasePlayer.tscn" id="1_aeo7e"]
 [ext_resource type="TileSet" uid="uid://dyw3bem07jnsm" path="res://Tilesets/backgrounds.tres" id="2_6erxs"]
-[ext_resource type="TileSet" uid="uid://bann38wla7hon" path="res://Tilesets/platforms.tres" id="3_a5qpi"]
+[ext_resource type="TileSet" uid="uid://bann38wla7hon" path="res://Tilesets/base.tres" id="3_a5qpi"]
 
 [node name="Level" type="Node2D"]
 
