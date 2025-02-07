@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bct4vg45dics6"]
+[gd_scene load_steps=3 format=3 uid="uid://b840s1vtqdve8"]
 
 [ext_resource type="Texture2D" uid="uid://w46lmkcnodey" path="res://Sprites/Tilesets/platforms_tilesheet.png" id="1_poagc"]
 
@@ -11,12 +11,10 @@ collision_mask = 2
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -9)
 texture = ExtResource("1_poagc")
 hframes = 37
 vframes = 14
 frame = 392
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_1dr15")
