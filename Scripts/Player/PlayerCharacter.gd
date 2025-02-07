@@ -28,12 +28,12 @@ func _ready() -> void:
 	#Setting default state
 	SM.current_state = SM.states.get("Idle")
 
-#Frame time updates
+#Method called on frame time updates
 func _process(_delta: float) -> void:
 	#Delegate logic to current state
 	SM.manage(_delta, self)
 
-#Fixed time updates
+#Method called on fixed time updates
 func _physics_process(_delta: float) -> void:
 	#Energy loss
 	velocity.x = move_toward(velocity.x, 0, 5 * resistance * _delta)

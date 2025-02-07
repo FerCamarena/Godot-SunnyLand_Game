@@ -18,13 +18,13 @@ class_name FallingPlatform
 @export var time_till_deletion: float = 0.5
 var spawn_position: Vector2i
 
-#Method called on first frame
+#Method called once at start
 func _ready() -> void:
 	#Saving default position for respawning
 	if allow_respawn:
 		spawn_position = position
 
-#Method called on fixed time
+#Method called on fixed time updates
 func _physics_process(_delta: float) -> void:
 	if freeze == true and position.y != spawn_position.y:
 		position.y = move_toward(position.y, spawn_position.y, reset_speed * _delta)
@@ -39,6 +39,7 @@ func _on_body_entered(body: Node):
 		
 		#Handle resets
 		if allow_respawn:
+			#Platform respawn
 			await get_tree().create_timer(time_till_reset).timeout
 			set_deferred(\"freeze\", true)
 		else:
@@ -62,7 +63,6 @@ max_contacts_reported = 1
 script = SubResource("GDScript_ltq60")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -9)
 texture = ExtResource("1_kjsq8")
 hframes = 37
 vframes = 14
