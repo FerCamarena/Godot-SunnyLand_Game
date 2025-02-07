@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdhg2jk7wxbv4"]
+
+[ext_resource type="Texture2D" uid="uid://c2quooqnbmx40" path="res://Sprites/Tilesets/decorations_tilesheet.png" id="1_b5h4y"]
+
+[node name="BaseTouchable" type="Area2D"]
+position = Vector2(0, -9)
+monitoring = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 18)
+texture = ExtResource("1_b5h4y")
+centered = false
+offset = Vector2(-9, -18)
+hframes = 22
+vframes = 9
+frame = 88
+
+[node name="Shape" type="CollisionShape2D" parent="."]
