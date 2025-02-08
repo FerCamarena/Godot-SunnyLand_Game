@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://blji4xi2wujrn"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCharacter.gd" id="1_llowg"]
+[ext_resource type="PackedScene" uid="uid://b840s1vtqdve8" path="res://Prefabs/Block.tscn" id="2_y55lc"]
 [ext_resource type="Texture2D" uid="uid://dv8tuujxo4snb" path="res://Sprites/Tilesets/characters_spritesheet.png" id="3_in1sb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4m7f"]
