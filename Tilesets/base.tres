@@ -1,6 +1,17 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bann38wla7hon"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://bann38wla7hon"]
 
 [ext_resource type="Texture2D" uid="uid://w46lmkcnodey" path="res://Sprites/Tilesets/platforms_tilesheet.png" id="1_pxhq0"]
+[ext_resource type="PackedScene" uid="uid://d0b2ttm1a52o0" path="res://Prefabs/Door.tscn" id="2_440ta"]
+[ext_resource type="PackedScene" uid="uid://bct4vg45dics6" path="res://Prefabs/FallingPlatform.tscn" id="2_r3bq5"]
+[ext_resource type="PackedScene" uid="uid://b65x3g3cs8cag" path="res://Prefabs/Shelter.tscn" id="3_dmik0"]
+[ext_resource type="PackedScene" uid="uid://wleb7uprtj0n" path="res://Prefabs/ShortDryGrass.tscn" id="4_4a45i"]
+[ext_resource type="PackedScene" uid="uid://bmjdfsb2dh8mi" path="res://Prefabs/ShortDryVines.tscn" id="5_j1wi7"]
+[ext_resource type="PackedScene" uid="uid://bjfhylyj4luj" path="res://Prefabs/Spykes.tscn" id="5_ynhl3"]
+[ext_resource type="PackedScene" uid="uid://dubyy5jnjb2wi" path="res://Prefabs/TallDryGrass.tscn" id="6_ou268"]
+[ext_resource type="PackedScene" uid="uid://ia7usijrlkqn" path="res://Prefabs/TallDryVines.tscn" id="7_c6ecb"]
+[ext_resource type="PackedScene" uid="uid://eh3vc7vr8e6p" path="res://Prefabs/DiamondCollectible.tscn" id="7_m6jfh"]
+[ext_resource type="PackedScene" uid="uid://cg27de4b05b7r" path="res://Prefabs/KeyCollectible.tscn" id="8_aspyu"]
+[ext_resource type="PackedScene" uid="uid://bb8gqc3qghseq" path="res://Prefabs/CoinCollectible.tscn" id="9_ajho6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_81juv"]
 resource_name = "tileset"
@@ -4228,6 +4239,20 @@ use_texture_padding = false
 16:12/0/terrains_peering_bit/right_side = 13
 16:12/0/terrains_peering_bit/left_side = 13
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0e0ym"]
+resource_name = "interactables"
+scenes/0/scene = ExtResource("2_440ta")
+scenes/1/scene = ExtResource("3_dmik0")
+scenes/2/scene = ExtResource("2_r3bq5")
+scenes/3/scene = ExtResource("5_ynhl3")
+scenes/4/scene = ExtResource("7_m6jfh")
+scenes/5/scene = ExtResource("8_aspyu")
+scenes/6/scene = ExtResource("9_ajho6")
+scenes/7/scene = ExtResource("4_4a45i")
+scenes/8/scene = ExtResource("6_ou268")
+scenes/9/scene = ExtResource("5_j1wi7")
+scenes/10/scene = ExtResource("7_c6ecb")
+
 [resource]
 tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 2
@@ -4356,3 +4381,4 @@ terrain_set_7/terrain_4/color = Color(0.28125, 0.5, 0.25, 1)
 terrain_set_7/terrain_5/name = "decorated_andesite"
 terrain_set_7/terrain_5/color = Color(0.25, 0.5, 0.3125, 1)
 sources/0 = SubResource("TileSetAtlasSource_81juv")
+sources/1 = SubResource("TileSetScenesCollectionSource_0e0ym")
