@@ -37,6 +37,7 @@ func _on_body_entered(body: Node):
 position = Vector2(0, -9)
 collision_layer = 16
 monitoring = false
+collision_layer = 32
 script = SubResource("GDScript_bq2oj")
 
 [node name="Sprite" type="Sprite2D" parent="."]

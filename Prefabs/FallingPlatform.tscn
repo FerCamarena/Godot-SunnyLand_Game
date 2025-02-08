@@ -69,7 +69,9 @@ vframes = 14
 frame = 514
 
 [node name="Detection" type="Area2D" parent="."]
-collision_layer = 8
+position = Vector2(0, 9)
+collision_layer = 16
+monitorable = false
 
 [node name="Range" type="CollisionShape2D" parent="Detection"]
 position = Vector2(0, -18)
