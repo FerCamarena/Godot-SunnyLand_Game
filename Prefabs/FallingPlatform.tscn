@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://bct4vg45dics6"]
+
+[ext_resource type="Texture2D" uid="uid://w46lmkcnodey" path="res://Sprites/Tilesets/platforms_tilesheet.png" id="1_kjsq8"]
+
+[sub_resource type="GDScript" id="GDScript_ltq60"]
+resource_name = "FallingPlatform"
+script/source = "#Libraries
+extends RigidBody2D
+
+#Registration
+class_name FallingPlatform
+
+#Attributes
+@export var time_till_fall: float = 0.5
+@export var allow_respawn: bool = true
+@export var time_till_reset: float = 1
+@export var reset_speed: int = 200
+@export var time_till_deletion: float = 0.5
+var spawn_position: Vector2i
+
+#Method called once at start
+func _ready() -> void:
+	#Saving default position for respawning
+	if allow_respawn:
+		spawn_position = position
+
+#Method called on fixed time updates
+func _physics_process(_delta: float) -> void:
+	if freeze == true and position.y != spawn_position.y:
+		position.y = move_toward(position.y, spawn_position.y, reset_speed * _delta)
+
+#Method called once every body-entering signal
+func _on_body_entered(body: Node):
+	#Locking to only fall with player character
+	if body is CharacterBody2D:
+		#Handle death time
+		await get_tree().create_timer(time_till_fall).timeout
+		set_deferred(\"freeze\", false)
+		
+		#Handle resets
+		if allow_respawn:
+			#Platform respawn
+			await get_tree().create_timer(time_till_reset).timeout
+			set_deferred(\"freeze\", true)
+		else:
+			#Platform deletion
+			await get_tree().create_timer(time_till_fall).timeout
+			self.queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc724"]
+size = Vector2(18, 1.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj0ah"]
+size = Vector2(18, 10)
+
+[node name="FallingPlatform" type="RigidBody2D"]
+collision_layer = 8
+sleeping = true
+lock_rotation = true
+freeze = true
+max_contacts_reported = 1
+script = SubResource("GDScript_ltq60")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_kjsq8")
+hframes = 37
+vframes = 14
+frame = 514
+
+[node name="Detection" type="Area2D" parent="."]
+position = Vector2(0, 9)
+collision_layer = 16
+monitorable = false
+
+[node name="Range" type="CollisionShape2D" parent="Detection"]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_tc724")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_mj0ah")
+one_way_collision = true
+
+[connection signal="body_entered" from="Detection" to="." method="_on_body_entered"]

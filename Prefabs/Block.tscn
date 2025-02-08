@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bct4vg45dics6"]
+[gd_scene load_steps=3 format=3 uid="uid://b840s1vtqdve8"]
 
 [ext_resource type="Texture2D" uid="uid://w46lmkcnodey" path="res://Sprites/Tilesets/platforms_tilesheet.png" id="1_poagc"]
 
@@ -6,8 +6,7 @@
 size = Vector2(18, 18)
 
 [node name="Block" type="StaticBody2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1

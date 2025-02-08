@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://eh3vc7vr8e6p"]
+
+[ext_resource type="PackedScene" uid="uid://c3a514exc62vs" path="res://Prefabs/BaseCollectible.tscn" id="1_otusm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kt1kl"]
+radius = 8.0
+
+[node name="DiamondCollectible" instance=ExtResource("1_otusm")]
+
+[node name="Sprite" parent="." index="0"]
+frame = 0
+
+[node name="Shape" parent="." index="1"]
+shape = SubResource("CircleShape2D_kt1kl")
