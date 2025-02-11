@@ -41,9 +41,6 @@ func _on_crash_detected(body: Node):
 		#Trap reset
 		await get_tree().create_timer(time_to_reset).timeout
 		set_deferred(\"freeze\", true)
-	elif body is CharacterBody2D:
-		#Handling player death
-		print(\"death\")
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iexrq"]
