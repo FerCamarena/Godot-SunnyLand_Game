@@ -5,12 +5,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgfxw"]
 size = Vector2(10, 12)
 
-[node name="TallDryGrass" instance=ExtResource("1_7v2l6")]
+[node name="TallDryGrass" node_paths=PackedStringArray("sprite") instance=ExtResource("1_7v2l6")]
 position = Vector2(0, 9)
+sprite = NodePath("Sprite")
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2(0, 0)
-frame = 147
+position = Vector2(0, 1)
+frame = 178
 
 [node name="Shape" parent="." index="1"]
 position = Vector2(0, -6)

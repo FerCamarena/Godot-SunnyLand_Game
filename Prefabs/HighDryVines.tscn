@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cof11nl8efus7"]
+
+[ext_resource type="PackedScene" uid="uid://bdhg2jk7wxbv4" path="res://Prefabs/BaseTouchable.tscn" id="1_ei6cw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsqfi"]
+size = Vector2(7, 13)
+
+[node name="TallDryVines" node_paths=PackedStringArray("sprite") instance=ExtResource("1_ei6cw")]
+sprite = NodePath("Sprite")
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(0, -1)
+offset = Vector2(-9, 0)
+flip_v = true
+frame = 181
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(-1.5, 6.5)
+shape = SubResource("RectangleShape2D_gsqfi")
