@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var PA: PlayerAnimator = PlayerAnimator.new()
 @onready var PS: PlayerSounder = PlayerSounder.new()
 @export var CS: CollisionShape2D
+@export var HB: Area2D
 
 #Attributes
 @export var move_speed: int = 160
