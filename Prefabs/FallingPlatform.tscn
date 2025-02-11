@@ -11,11 +11,11 @@ extends RigidBody2D
 class_name FallingPlatform
 
 #Attributes
-@export var time_till_fall: float = 0.5
+@export var time_to_fall: float = 0.5
 @export var allow_respawn: bool = true
-@export var time_till_reset: float = 1
+@export var time_to_reset: float = 1
 @export var reset_speed: int = 200
-@export var time_till_deletion: float = 0.5
+@export var time_to_deletion: float = 0.5
 var spawn_position: Vector2i
 
 #Method called once at start
@@ -26,36 +26,36 @@ func _ready() -> void:
 
 #Method called on fixed time updates
 func _physics_process(_delta: float) -> void:
-	if freeze == true and position.y != spawn_position.y:
+	if freeze and position.y >= spawn_position.y:
 		position.y = move_toward(position.y, spawn_position.y, reset_speed * _delta)
 
 #Method called once every body-entering signal
 func _on_body_entered(body: Node):
 	#Locking to only fall with player character
 	if body is CharacterBody2D:
-		#Handle death time
-		await get_tree().create_timer(time_till_fall).timeout
+		#Handle dead time
+		await get_tree().create_timer(time_to_fall).timeout
 		set_deferred(\"freeze\", false)
 		
 		#Handle resets
 		if allow_respawn:
 			#Platform respawn
-			await get_tree().create_timer(time_till_reset).timeout
+			await get_tree().create_timer(time_to_reset).timeout
 			set_deferred(\"freeze\", true)
 		else:
 			#Platform deletion
-			await get_tree().create_timer(time_till_fall).timeout
+			await get_tree().create_timer(time_to_deletion).timeout
 			self.queue_free()
 "
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc724"]
-size = Vector2(18, 1.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mj0ah"]
 size = Vector2(18, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc724"]
+size = Vector2(18, 1.5)
+
 [node name="FallingPlatform" type="RigidBody2D"]
-collision_layer = 8
+collision_layer = 16
 sleeping = true
 lock_rotation = true
 freeze = true
@@ -68,18 +68,18 @@ hframes = 37
 vframes = 14
 frame = 514
 
-[node name="Detection" type="Area2D" parent="."]
-position = Vector2(0, 9)
-collision_layer = 16
-monitorable = false
-
-[node name="Range" type="CollisionShape2D" parent="Detection"]
-position = Vector2(0, -18)
-shape = SubResource("RectangleShape2D_tc724")
-
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_mj0ah")
 one_way_collision = true
 
-[connection signal="body_entered" from="Detection" to="." method="_on_body_entered"]
+[node name="Detector" type="Area2D" parent="."]
+position = Vector2(0, 9)
+collision_layer = 16
+monitorable = false
+
+[node name="Range" type="CollisionShape2D" parent="Detector"]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_tc724")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_body_entered"]
