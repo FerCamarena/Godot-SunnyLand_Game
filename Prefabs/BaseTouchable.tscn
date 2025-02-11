@@ -17,26 +17,31 @@ var rotationOffset: float = 0.0
 func _ready():
 	$Sprite.flip_h = randi() % 2 == 0
 
-
 #Method called on frame time updates
 func _process(_delta):
 	#Rotating based on collision movements
-	#rotate_toward(rotation_degrees, rotationOffset * 540,  _delta)
-	
-	#Reseting offset
-	rotationOffset -= _delta
+	set_rotation(rotate_toward(rotation, rotationOffset, 5 * _delta))
 
 #Method called once every body-entering signal
 func _on_body_entered(body: Node):
-	#Detecting character collision
+	#Detection for character collision
 	if body is CharacterBody2D:
-		rotationOffset = body.velocity.x
+		rotationOffset = body.velocity.x / 500
+		#await get_tree().create_timer(0.1).timeout
+		#if body.position.x < position.x:
+			#rotationOffset *= -1
+
+#Method called once every body-exiting signal
+func _on_body_exited(body: Node2D) -> void:
+	#Detection for character collision
+	if body is CharacterBody2D:
+		if rotationOffset != 0.0:
+			await get_tree().create_timer(0.1).timeout
+			rotationOffset = 0.0
 "
 
 [node name="BaseTouchable" type="Area2D"]
 position = Vector2(0, -9)
-collision_layer = 16
-monitoring = false
 collision_layer = 32
 monitorable = false
 script = SubResource("GDScript_bq2oj")
@@ -53,3 +58,4 @@ frame = 88
 [node name="Shape" type="CollisionShape2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
