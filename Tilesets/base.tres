@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b65x3g3cs8cag" path="res://Prefabs/Shelter.tscn" id="3_dmik0"]
 [ext_resource type="PackedScene" uid="uid://wleb7uprtj0n" path="res://Prefabs/ShortDryGrass.tscn" id="4_4a45i"]
 [ext_resource type="PackedScene" uid="uid://bmjdfsb2dh8mi" path="res://Prefabs/ShortDryVines.tscn" id="5_j1wi7"]
-[ext_resource type="PackedScene" uid="uid://bjfhylyj4luj" path="res://Prefabs/Spykes.tscn" id="5_ynhl3"]
+[ext_resource type="PackedScene" uid="uid://bjfhylyj4luj" path="res://Prefabs/Spikes.tscn" id="6_2jutp"]
 [ext_resource type="PackedScene" uid="uid://dubyy5jnjb2wi" path="res://Prefabs/TallDryGrass.tscn" id="6_ou268"]
 [ext_resource type="PackedScene" uid="uid://ia7usijrlkqn" path="res://Prefabs/TallDryVines.tscn" id="7_c6ecb"]
 [ext_resource type="PackedScene" uid="uid://eh3vc7vr8e6p" path="res://Prefabs/DiamondCollectible.tscn" id="7_m6jfh"]
@@ -4244,7 +4244,7 @@ resource_name = "interactables"
 scenes/0/scene = ExtResource("2_440ta")
 scenes/1/scene = ExtResource("3_dmik0")
 scenes/2/scene = ExtResource("2_r3bq5")
-scenes/3/scene = ExtResource("5_ynhl3")
+scenes/3/scene = ExtResource("6_2jutp")
 scenes/4/scene = ExtResource("7_m6jfh")
 scenes/5/scene = ExtResource("8_aspyu")
 scenes/6/scene = ExtResource("9_ajho6")
