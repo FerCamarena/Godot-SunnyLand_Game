@@ -23,8 +23,13 @@ func _ready() -> void:
 
 #Method called on fixed time updates
 func _physics_process(_delta: float) -> void:
+	#Reseting to spawn position
 	if freeze and position.y >= spawn_position.y:
 		position.y = move_toward(position.y, spawn_position.y, reset_speed * _delta)
+	
+	#Handling x movement
+	if position.x != spawn_position.x:
+		position.x = spawn_position.x
 
 #Method called once every body-entering signal
 func _on_player_detected(body: Node):
