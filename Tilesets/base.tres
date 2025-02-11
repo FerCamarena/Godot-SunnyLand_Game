@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://bann38wla7hon"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://bann38wla7hon"]
 
 [ext_resource type="Texture2D" uid="uid://w46lmkcnodey" path="res://Sprites/Tilesets/platforms_tilesheet.png" id="1_pxhq0"]
 [ext_resource type="PackedScene" uid="uid://d0b2ttm1a52o0" path="res://Prefabs/Door.tscn" id="2_440ta"]
 [ext_resource type="PackedScene" uid="uid://bct4vg45dics6" path="res://Prefabs/FallingPlatform.tscn" id="2_r3bq5"]
 [ext_resource type="PackedScene" uid="uid://b65x3g3cs8cag" path="res://Prefabs/Shelter.tscn" id="3_dmik0"]
 [ext_resource type="PackedScene" uid="uid://wleb7uprtj0n" path="res://Prefabs/ShortDryGrass.tscn" id="4_4a45i"]
+[ext_resource type="PackedScene" uid="uid://dtwm85yc6n6iy" path="res://Prefabs/FallingTrap.tscn" id="5_buo0y"]
 [ext_resource type="PackedScene" uid="uid://bmjdfsb2dh8mi" path="res://Prefabs/ShortDryVines.tscn" id="5_j1wi7"]
 [ext_resource type="PackedScene" uid="uid://bjfhylyj4luj" path="res://Prefabs/Spikes.tscn" id="6_2jutp"]
 [ext_resource type="PackedScene" uid="uid://dubyy5jnjb2wi" path="res://Prefabs/TallDryGrass.tscn" id="6_ou268"]
@@ -4252,6 +4253,7 @@ scenes/7/scene = ExtResource("4_4a45i")
 scenes/8/scene = ExtResource("6_ou268")
 scenes/9/scene = ExtResource("5_j1wi7")
 scenes/10/scene = ExtResource("7_c6ecb")
+scenes/11/scene = ExtResource("5_buo0y")
 
 [resource]
 tile_size = Vector2i(18, 18)
