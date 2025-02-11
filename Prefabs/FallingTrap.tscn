@@ -56,8 +56,8 @@ size = Vector2(18, 2)
 size = Vector2(14, 198)
 
 [node name="FallingTrap" type="RigidBody2D"]
-collision_layer = 512
-collision_mask = 3
+collision_layer = 1024
+collision_mask = 19
 sleeping = true
 lock_rotation = true
 freeze = true
@@ -70,21 +70,21 @@ hframes = 2
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iexrq")
 
-[node name="CrashDetector" type="Area2D" parent="."]
-collision_layer = 512
-collision_mask = 3
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 18
 
-[node name="Range" type="CollisionShape2D" parent="CrashDetector"]
+[node name="Range" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_1hsdd")
 
-[node name="PlayerDetector" type="Area2D" parent="."]
-collision_layer = 512
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 1024
 monitorable = false
 
-[node name="Range" type="CollisionShape2D" parent="PlayerDetector"]
+[node name="Range" type="CollisionShape2D" parent="Detector"]
 position = Vector2(0, 108)
 shape = SubResource("RectangleShape2D_xdaaw")
 
-[connection signal="body_entered" from="CrashDetector" to="." method="_on_crash_detected"]
-[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detected"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_crash_detected"]
+[connection signal="body_entered" from="Detector" to="." method="_on_player_detected"]

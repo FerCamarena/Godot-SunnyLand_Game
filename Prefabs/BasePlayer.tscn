@@ -25,11 +25,11 @@ size = Vector2(14, 17.9367)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("CS", "HB")]
 z_index = 1
-collision_mask = 831
+collision_mask = 1855
 floor_constant_speed = true
 platform_on_leave = 1
 platform_floor_layers = 2
-platform_wall_layers = 528
+platform_wall_layers = 1040
 safe_margin = 0.001
 script = ExtResource("1_llowg")
 CS = NodePath("Shape")

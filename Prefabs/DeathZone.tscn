@@ -6,6 +6,8 @@
 size = Vector2(18, 18)
 
 [node name="DeathZone" type="Area2D"]
+collision_layer = 256
+monitoring = false
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_ee6fk")
