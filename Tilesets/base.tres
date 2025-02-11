@@ -4243,19 +4243,19 @@ use_texture_padding = false
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0e0ym"]
 resource_name = "interactables"
-scenes/0/scene = ExtResource("2_440ta")
-scenes/1/scene = ExtResource("3_dmik0")
-scenes/2/scene = ExtResource("2_r3bq5")
-scenes/3/scene = ExtResource("6_2jutp")
-scenes/4/scene = ExtResource("7_m6jfh")
-scenes/5/scene = ExtResource("8_aspyu")
-scenes/6/scene = ExtResource("9_ajho6")
-scenes/7/scene = ExtResource("4_4a45i")
-scenes/8/scene = ExtResource("6_ou268")
-scenes/9/scene = ExtResource("5_j1wi7")
-scenes/10/scene = ExtResource("7_c6ecb")
-scenes/11/scene = ExtResource("5_buo0y")
-scenes/12/scene = ExtResource("6_vojrr")
+scenes/0/scene = ExtResource("6_vojrr")
+scenes/1/scene = ExtResource("2_440ta")
+scenes/2/scene = ExtResource("3_dmik0")
+scenes/3/scene = ExtResource("2_r3bq5")
+scenes/4/scene = ExtResource("6_2jutp")
+scenes/5/scene = ExtResource("5_buo0y")
+scenes/6/scene = ExtResource("7_m6jfh")
+scenes/7/scene = ExtResource("8_aspyu")
+scenes/8/scene = ExtResource("9_ajho6")
+scenes/9/scene = ExtResource("4_4a45i")
+scenes/10/scene = ExtResource("6_ou268")
+scenes/11/scene = ExtResource("5_j1wi7")
+scenes/12/scene = ExtResource("7_c6ecb")
 
 [resource]
 tile_size = Vector2i(18, 18)

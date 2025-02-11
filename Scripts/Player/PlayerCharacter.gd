@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var PA: PlayerAnimator = PlayerAnimator.new()
 @onready var PS: PlayerSounder = PlayerSounder.new()
 @export var CS: CollisionShape2D
+@export var HB: Area2D
 
 #Attributes
 @export var move_speed: int = 160
@@ -35,6 +36,13 @@ func _process(_delta: float) -> void:
 
 #Method called on fixed time updates
 func _physics_process(_delta: float) -> void:
+	#Handling dangers harm
+	if not HB.get_overlapping_areas().is_empty():
+		for area in HB.get_overlapping_areas():
+			var layer = area.collision_layer
+			if layer & (1 << 8) or layer & (1 << 9) or (is_on_floor() and layer & (1 << 10) and area.get_parent().linear_velocity.y > 0):
+				SM.change_state("Die", self)
+	
 	#Energy loss
 	velocity.x = move_toward(velocity.x, 0, 5 * resistance * _delta)
 	
