@@ -54,7 +54,7 @@ func _process(_delta):
 		sprite.set_rotation(rotate_toward(sprite.rotation, rotationOffset, 5 * _delta))
 
 #Method called once every body-entering signal
-func _on_body_entered(body: Node):
+func _on_body_entered(body: Node2D) -> void:
 	#Detection for character collision
 	if body is CharacterBody2D:
 		#Storing player
