@@ -8,6 +8,7 @@ size = Vector2(10, 10.5)
 [node name="ShortDryVines" instance=ExtResource("1_ejhar")]
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2(0, 17)
 flip_v = true
 frame = 34
 

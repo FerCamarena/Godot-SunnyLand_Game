@@ -9,7 +9,7 @@ size = Vector2(10, 12)
 position = Vector2(0, 9)
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2(0, 0)
+position = Vector2(0, 1)
 frame = 147
 
 [node name="Shape" parent="." index="1"]
