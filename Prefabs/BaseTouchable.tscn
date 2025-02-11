@@ -11,6 +11,7 @@ extends Area2D
 class_name DynamicTouchInteractions
 
 #Atributes
+var player: CharacterBody2D = null
 var rotationOffset: float = 0.0
 
 #Components
@@ -22,25 +23,49 @@ func _ready():
 
 #Method called on frame time updates
 func _process(_delta):
-	#Rotating based on collision movements
-	set_rotation(rotate_toward(rotation, rotationOffset, 5 * _delta))
+	#When touching player
+	if player != null:
+		#Updating rotation offset from distance to player
+		rotationOffset = (1 / (player.position.x - position.x))
+		#Limit values to prevent over rotation
+		rotationOffset = clamp(rotationOffset, -0.333, 0.333)
+		
+		#Inverting value for upside down sprites
+		if sprite.flip_v:
+			rotationOffset *= -1
+		
+		#Checking player movement
+		if player.velocity.x == 0.0:
+			#Inverting direction when stands on
+			rotationOffset *= -1
+		else:
+			#Scaling when player runs over
+			rotationOffset *= (player.velocity.x / 50)
+	#When not touching player and not already 0.0
+	elif rotationOffset != 0.0:
+		#Waiting 0.1 seconds before returning
+		await get_tree().create_timer(0.25).timeout
+		#Reseting to 0.0 when 
+		rotationOffset = 0.0
+	
+	#Updating after reseting and while touching player
+	if sprite.rotation != rotationOffset:
+		#Rotating based on collision movements
+		sprite.set_rotation(rotate_toward(sprite.rotation, rotationOffset, 5 * _delta))
 
 #Method called once every body-entering signal
 func _on_body_entered(body: Node):
 	#Detection for character collision
 	if body is CharacterBody2D:
-		rotationOffset = body.velocity.x / 500
-		#await get_tree().create_timer(0.1).timeout
-		#if body.position.x < position.x:
-			#rotationOffset *= -1
+		#Storing player
+		player = body
 
 #Method called once every body-exiting signal
 func _on_body_exited(body: Node2D) -> void:
 	#Detection for character collision
 	if body is CharacterBody2D:
-		if rotationOffset != 0.0:
-			await get_tree().create_timer(0.1).timeout
-			rotationOffset = 0.0
+		#Removing player
+		player = null
 "
 
 [node name="BaseTouchable" type="Area2D"]
