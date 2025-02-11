@@ -1,6 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtwm85yc6n6iy"]
+[gd_scene load_steps=6 format=3 uid="uid://dtwm85yc6n6iy"]
 
 [ext_resource type="Texture2D" uid="uid://dxnswlqwoovi0" path="res://Sprites/Tilesets/enemies_spritesheet.png" id="1_bfb32"]
+
+[sub_resource type="GDScript" id="GDScript_ueunl"]
+resource_name = "FallingTrap"
+script/source = "#Libraries
+extends RigidBody2D
+
+#Registration
+class_name FallingTrap
+
+#Attributes
+@export var time_to_fall: float = 0.5
+@export var time_to_reset: float = 0.5
+@export var reset_speed: int = 200
+var spawn_position: Vector2i
+
+#Method called once at start
+func _ready() -> void:
+	#Saving default position for reseting
+	spawn_position = position
+
+#Method called on fixed time updates
+func _physics_process(_delta: float) -> void:
+	if freeze and position.y >= spawn_position.y:
+		position.y = move_toward(position.y, spawn_position.y, reset_speed * _delta)
+
+#Method called once every body-entering signal
+func _on_player_detected(body: Node):
+	#Locking to only fall with player character
+	if body is CharacterBody2D and position.y == spawn_position.y:
+		#Handle dead time
+		await get_tree().create_timer(time_to_fall).timeout
+		set_deferred(\"freeze\", false)
+
+#Method called once every body-entering signal
+func _on_crash_detected(body: Node):
+	#Locking to only detect tilemap ground collisions
+	if body is TileMapLayer:
+		#Trap reset
+		await get_tree().create_timer(time_to_reset).timeout
+		set_deferred(\"freeze\", true)
+	elif body is CharacterBody2D:
+		#Handling player death
+		print(\"death\")
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iexrq"]
 size = Vector2(18, 18)
@@ -17,6 +61,7 @@ collision_mask = 3
 sleeping = true
 lock_rotation = true
 freeze = true
+script = SubResource("GDScript_ueunl")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_bfb32")
