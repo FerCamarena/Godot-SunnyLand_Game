@@ -13,6 +13,9 @@ class_name DynamicTouchInteractions
 #Atributes
 var rotationOffset: float = 0.0
 
+#Components
+@export var sprite: Sprite2D
+
 #Method called once at start
 func _ready():
 	$Sprite.flip_h = randi() % 2 == 0

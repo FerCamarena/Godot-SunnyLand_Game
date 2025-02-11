@@ -5,7 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yofh6"]
 size = Vector2(10, 10.5)
 
-[node name="ShortDryVines" instance=ExtResource("1_ejhar")]
+[node name="ShortDryVines" node_paths=PackedStringArray("sprite") instance=ExtResource("1_ejhar")]
+sprite = NodePath("Sprite")
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2(0, -1)
