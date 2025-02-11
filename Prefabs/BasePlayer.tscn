@@ -22,13 +22,18 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("CS")]
 z_index = 1
-collision_mask = 319
+collision_mask = 831
+floor_constant_speed = true
 platform_on_leave = 1
 platform_floor_layers = 2
-platform_wall_layers = 16
+platform_wall_layers = 528
 safe_margin = 0.001
 script = ExtResource("1_llowg")
 CS = NodePath("Shape")
+move_speed = 128
+aero_speed = 128
+jump_force = -448
+fall_speed = -448
 block = ExtResource("2_y55lc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
