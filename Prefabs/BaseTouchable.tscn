@@ -18,7 +18,7 @@ var rotationOffset: float = 0.0
 
 #Method called once at start
 func _ready():
-	$Sprite.flip_h = randi() % 2 == 0
+	sprite.flip_h = randi_range(0, 1)
 
 #Method called on frame time updates
 func _process(_delta):
