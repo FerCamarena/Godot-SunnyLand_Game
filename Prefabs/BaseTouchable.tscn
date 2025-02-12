@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdhg2jk7wxbv4"]
+
+[ext_resource type="Texture2D" uid="uid://c2quooqnbmx40" path="res://Sprites/Tilesets/decorations_tilesheet.png" id="1_b5h4y"]
+
+[sub_resource type="GDScript" id="GDScript_bq2oj"]
+resource_name = "DynamicTouchInteractions"
+script/source = "#Libraries
+extends Area2D
+
+#Registration
+class_name DynamicTouchInteractions
+
+#Atributes
+var player: CharacterBody2D = null
+var rotationOffset: float = 0.0
+
+#Components
+@export var sprite: Sprite2D
+
+#Method called once at start
+func _ready():
+	sprite.flip_h = randi_range(0, 1)
+
+#Method called on frame time updates
+func _process(_delta):
+	#When touching player
+	if player:
+		#Updating rotation offset from distance to player
+		rotationOffset = (1 / (player.position.x - position.x))
+		#Limit values to prevent over rotation
+		rotationOffset = clamp(rotationOffset, -0.333, 0.333)
+		
+		#Inverting value for upside down sprites
+		if sprite.flip_v:
+			rotationOffset *= -1
+		
+		#Checking player movement
+		if player.velocity.x == 0.0:
+			#Inverting direction when stands on
+			rotationOffset *= -1
+		else:
+			#Scaling when player runs over
+			rotationOffset *= (player.velocity.x / 50)
+	#When not touching player and not already 0.0
+	elif rotationOffset != 0.0:
+		#Waiting 0.1 seconds before returning
+		await get_tree().create_timer(0.25).timeout
+		#Reseting to 0.0 when 
+		rotationOffset = 0.0
+	
+	#Updating after reseting and while touching player
+	if sprite.rotation != rotationOffset:
+		#Rotating based on collision movements
+		sprite.set_rotation(rotate_toward(sprite.rotation, rotationOffset, 5 * _delta))
+
+#Method called once every body-entering signal
+func _on_body_entered(body: Node2D) -> void:
+	#Detection for character collision
+	if body is CharacterBody2D:
+		#Storing player
+		player = body
+
+#Method called once every body-exiting signal
+func _on_body_exited(body: Node2D) -> void:
+	#Detection for character collision
+	if body is CharacterBody2D:
+		#Removing player
+		player = null
+"
+
+[node name="BaseTouchable" type="Area2D"]
+position = Vector2(0, -9)
+collision_layer = 32
+monitorable = false
+script = SubResource("GDScript_bq2oj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 18)
+texture = ExtResource("1_b5h4y")
+centered = false
+offset = Vector2(-9, -18)
+hframes = 22
+vframes = 9
+frame = 88
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

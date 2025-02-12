@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtwm85yc6n6iy"]
+
+[ext_resource type="Texture2D" uid="uid://dxnswlqwoovi0" path="res://Sprites/Tilesets/enemies_spritesheet.png" id="1_bfb32"]
+
+[sub_resource type="GDScript" id="GDScript_ueunl"]
+resource_name = "FallingTrap"
+script/source = "#Libraries
+extends RigidBody2D
+
+#Registration
+class_name FallingTrap
+
+#Attributes
+@export var time_to_fall: float = 0.5
+@export var time_to_reset: float = 0.5
+@export var reset_speed: int = 200
+var spawn_position: Vector2i
+
+#Method called once at start
+func _ready() -> void:
+	#Saving default position for reseting
+	spawn_position = position
+
+#Method called on fixed time updates
+func _physics_process(_delta: float) -> void:
+	#Reseting to spawn position
+	if freeze and position.y >= spawn_position.y:
+		position.y = move_toward(position.y, spawn_position.y, reset_speed * _delta)
+	
+	#Handling x movement
+	if position.x != spawn_position.x:
+		position.x = spawn_position.x
+
+#Method called once every body-entering signal
+func _on_player_detected(body: Node2D):
+	#Locking to only fall with player character
+	if body is CharacterBody2D and position.y == spawn_position.y:
+		#Handle dead time
+		await get_tree().create_timer(time_to_fall).timeout
+		set_deferred(\"freeze\", false)
+
+#Method called once every body-entering signal
+func _on_crash_detected(body: Node2D):
+	#Locking to only detect tilemap and ground collisions
+	var layer = body.tile_set.get_physics_layer_collision_layer(0) if body is TileMapLayer else body.collision_layer
+	if layer & (1 << 1) or layer & (1 << 2) or layer & (1 << 4):
+		await get_tree().create_timer(time_to_reset).timeout
+		set_deferred(\"freeze\", true)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iexrq"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hsdd"]
+size = Vector2(18, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdaaw"]
+size = Vector2(14, 198)
+
+[node name="FallingTrap" type="RigidBody2D"]
+collision_layer = 1024
+collision_mask = 23
+sleeping = true
+lock_rotation = true
+freeze = true
+script = SubResource("GDScript_ueunl")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_bfb32")
+hframes = 2
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iexrq")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 22
+
+[node name="Range" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_1hsdd")
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 1024
+monitorable = false
+
+[node name="Range" type="CollisionShape2D" parent="Detector"]
+position = Vector2(0, 108)
+shape = SubResource("RectangleShape2D_xdaaw")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_crash_detected"]
+[connection signal="body_entered" from="Detector" to="." method="_on_player_detected"]

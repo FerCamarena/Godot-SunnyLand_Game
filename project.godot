@@ -11,9 +11,23 @@ config_version=5
 [application]
 
 config/name="SunnyLand"
+config/description="Tiny platformer inspired by SnowyLand. Core gameplay involves puzzle solving featuring a series of minimalistic levels where you must sacrifice comrades by morphing them into platforms. Players must survive with at least one last comrade to complete levels by hiding in the next shadow."
+config/version="v0.2.0-dev"
 run/main_scene="res://Scenes/test_scene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+run/max_fps=240
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=250
+boot_splash/version="v0.1.122-dev"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [input]
 
@@ -48,3 +62,5 @@ morph={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
