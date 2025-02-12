@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0b2ttm1a52o0"]
+
+[ext_resource type="Texture2D" uid="uid://c2quooqnbmx40" path="res://Sprites/Tilesets/decorations_tilesheet.png" id="1_tpbi6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjobr"]
+size = Vector2(10, 18)
+
+[node name="Door" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_tpbi6")
+hframes = 22
+vframes = 9
+frame = 26
+
+[node name="Extra" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+texture = ExtResource("1_tpbi6")
+hframes = 22
+vframes = 9
+frame = 4
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yjobr")

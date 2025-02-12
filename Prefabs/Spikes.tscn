@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjfhylyj4luj"]
+
+[ext_resource type="Texture2D" uid="uid://c2quooqnbmx40" path="res://Sprites/Tilesets/decorations_tilesheet.png" id="1_lkqdb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhadl"]
+size = Vector2(14, 7)
+
+[node name="Spikes" type="Area2D"]
+z_index = 1
+collision_layer = 512
+monitoring = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_lkqdb")
+hframes = 22
+vframes = 9
+frame = 166
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_dhadl")

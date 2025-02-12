@@ -32,6 +32,7 @@ func execute(_delta: float, _parent: CharacterBody2D) -> void:
 	#Generate object
 	spawnObject(_parent)
 
+#Method called to spawn a block instance
 func spawnObject(_parent: CharacterBody2D) -> void:
 	var blockObject = _parent.block.instantiate()
 	_parent.get_parent().add_child(blockObject)
