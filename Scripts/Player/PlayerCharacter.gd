@@ -40,7 +40,9 @@ func _physics_process(_delta: float) -> void:
 	if not HB.get_overlapping_areas().is_empty():
 		for area in HB.get_overlapping_areas():
 			var layer = area.collision_layer
-			if layer & (1 << 8) or layer & (1 << 9) or (is_on_floor() and layer & (1 << 10) and area.get_parent().linear_velocity.y > 0):
+			if (layer & (1 << 8)
+			or layer & (1 << 9)
+			or (layer & (1 << 10) and is_on_floor() and area.get_parent().linear_velocity.y > 0)):
 				SM.change_state("Die", self)
 	
 	#Energy loss
