@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 		position.x = spawn_position.x
 
 #Method called once every body-entering signal
-func _on_player_detected(body: Node):
+func _on_player_detected(body: Node2D):
 	#Locking to only fall with player character
 	if body is CharacterBody2D and position.y == spawn_position.y:
 		#Handle dead time
@@ -40,10 +40,10 @@ func _on_player_detected(body: Node):
 		set_deferred(\"freeze\", false)
 
 #Method called once every body-entering signal
-func _on_crash_detected(body: Node):
-	#Locking to only detect tilemap ground collisions
-	if body is TileMapLayer:
-		#Trap reset
+func _on_crash_detected(body: Node2D):
+	#Locking to only detect tilemap and ground collisions
+	var layer = body.tile_set.get_physics_layer_collision_layer(0) if body is TileMapLayer else body.collision_layer
+	if layer & (1 << 1) or layer & (1 << 2) or layer & (1 << 4):
 		await get_tree().create_timer(time_to_reset).timeout
 		set_deferred(\"freeze\", true)
 "
@@ -59,7 +59,7 @@ size = Vector2(14, 198)
 
 [node name="FallingTrap" type="RigidBody2D"]
 collision_layer = 1024
-collision_mask = 19
+collision_mask = 23
 sleeping = true
 lock_rotation = true
 freeze = true
@@ -74,7 +74,7 @@ shape = SubResource("RectangleShape2D_iexrq")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 1024
-collision_mask = 18
+collision_mask = 22
 
 [node name="Range" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 9)
