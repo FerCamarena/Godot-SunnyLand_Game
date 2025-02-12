@@ -24,7 +24,7 @@ func _ready():
 #Method called on frame time updates
 func _process(_delta):
 	#When touching player
-	if player != null:
+	if player:
 		#Updating rotation offset from distance to player
 		rotationOffset = (1 / (player.position.x - position.x))
 		#Limit values to prevent over rotation
