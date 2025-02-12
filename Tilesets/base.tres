@@ -4268,7 +4268,7 @@ scenes/16/scene = ExtResource("7_c6ecb")
 [resource]
 tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 513
+physics_layer_0/collision_mask = 1025
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "grass"
 terrain_set_0/terrain_0/color = Color(0, 1, 0, 1)
