@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b65x3g3cs8cag"]
+
+[ext_resource type="Texture2D" uid="uid://c2quooqnbmx40" path="res://Sprites/Tilesets/decorations_tilesheet.png" id="1_1xmyo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7kxv"]
+size = Vector2(6, 17.5)
+
+[node name="Shelter" type="Area2D"]
+collision_layer = 4
+monitorable = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+texture = ExtResource("1_1xmyo")
+hframes = 22
+vframes = 9
+frame = 75
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_q7kxv")

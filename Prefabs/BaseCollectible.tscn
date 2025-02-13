@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3a514exc62vs"]
+
+[ext_resource type="Texture2D" uid="uid://ckwaonuw5sri4" path="res://Sprites/Tilesets/interactables_spritesheet.png" id="1_wi0x1"]
+
+[node name="BaseCollectible" type="Area2D"]
+collision_layer = 8
+monitorable = false
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_wi0x1")
+hframes = 5
+vframes = 3
+frame = 2
+
+[node name="Shape" type="CollisionShape2D" parent="."]

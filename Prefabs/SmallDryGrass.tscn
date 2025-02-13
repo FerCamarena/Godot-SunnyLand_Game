@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnnupc6cqo4kw"]
+
+[ext_resource type="PackedScene" uid="uid://bdhg2jk7wxbv4" path="res://Prefabs/BaseTouchable.tscn" id="1_v45lt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bk2o"]
+size = Vector2(7, 7)
+
+[node name="SmallDryGrass" instance=ExtResource("1_v45lt")]
+
+[node name="Sprite" parent="." index="0"]
+frame = 180
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(-1.5, 13.5)
+shape = SubResource("RectangleShape2D_3bk2o")
